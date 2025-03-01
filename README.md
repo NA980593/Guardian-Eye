@@ -1,17 +1,17 @@
-﻿# Guardian Eye
- HenHacks 2025 Project
+# Guardian Eye
+HenHacks 2025 Project
 
-**Guardian Eye** is a cybersecurity web application designed to protect minors from online sextortion threats. The system monitors incoming SMS messages, analyzes them using the Gemini API for potential risks, and notifies both the child and their guardians if a threat is detected. It also provides actionable guidance to help the child respond appropriately.
+**Guardian Eye** is a cybersecurity web application designed to protect minors from online sextortion threats. The system monitors incoming SMS messages, analyzes them using the Gemini API for potential risks, and notifies both the child and their guardians if a threat is detected. Additionally, **Guardian Eye** features a **real-time chat application** that allows teens to securely communicate and report potential threats while also receiving support and guidance.
 
 ---
 
- ## Team Members
+## Team Members
 
 - **Kush Desai**: role(s)
 - **Nishchay Arjyal**: role(s)
 - **Nick Santone**: role(s)
 - **Lexi Baker**: role(s)
-  
+
 ---
 
 ## Overview
@@ -26,18 +26,20 @@ The website serves as a resource for:
 
 The platform aims to:
 
-- Provide teens with immediate alerts if they are targeted by a sextortion attempt
+- Provide teens with immediate alerts if they are targeted by a sextortion attempt.
 - Offer educational resources to help both teens and their guardians understand the risks and how to prevent them.
 - Facilitate secure and confidential communication for teens to report incidents and receive professional support.
 
 ---
 
 ## Key Features
-1. **SMS Monitoring**: Scans incoming messages for harmful or coercive content
-2. **AI Analysis**: Uses the Gemini API to detect suspicious language patterns
-3. **Real Time Alerts**: Notifies the child of potential threats and provides immediate advice
-4. **Guardian Notifications**: Alerts parents or guardians if a risk is detected
-5. **Safety Tips**: Offers guidance on how to handle sextortion attempts securely
+1. **SMS Monitoring**: Scans incoming messages for harmful or coercive content.
+2. **AI Analysis**: Uses the Gemini API to detect suspicious language patterns.
+3. **Real-Time Alerts**: Notifies the child of potential threats and provides immediate advice.
+4. **Guardian Notifications**: Alerts parents or guardians if a risk is detected.
+5. **Safety Tips**: Offers guidance on how to handle sextortion attempts securely.
+6. **Real-Time Chat Application**: Teens can securely communicate with their guardians or counselors via an integrated chat feature, report incidents, and receive instant advice in a confidential and safe environment.
+7. **Room-based Chat System**: Allows users to join specific rooms dedicated to different types of issues or support topics, ensuring appropriate conversations and guidance.
 
 ---
 
@@ -54,5 +56,5 @@ We are committed to fostering a safer online environment, particularly for vulne
 - **Frontend**: HTMX, Bootstrap
 - **AI Processing**: Gemini API
 - **Messaging**: Twilio SMS API
+- **Real-Time Chat**: Flask-SocketIO
 - **Database**: TBD
-
