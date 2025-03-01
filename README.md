@@ -11,7 +11,7 @@
 - **Nishchay Arjyal**: 
 - **Nick Santone**: 
 - **Lexi Baker**:
-- 
+  
 ---
 
 ## Overview
