@@ -10,8 +10,8 @@
 - **Kush Desai**: 
 - **Nishchay Arjyal**: 
 - **Nick Santone**: 
-- **Lexi Baker**: 
-
+- **Lexi Baker**:
+- 
 ---
 
 ## Overview
@@ -19,14 +19,25 @@ Sextortion is a form of blackmail where perpetrators threaten to release explici
 
 In recent years, sextortion has become an increasingly common issue among teenagers, with reports showing a troubling rise in cases. It is a serious and growing threat that GuardianEye aims to address by providing teens with the tools and knowledge to recognize, avoid, and report sextortion attempts.
 
+The website serves as a resource for:
+
+1. **Teens at Risk** – Individuals who are vulnerable to falling victim to sextortion due to their online activity.
+2. **Parents and Guardians** – Those who are looking for tools to protect their children from digital exploitation.
+
+The platform aims to:
+
+- Provide teens with immediate alerts if they are targeted by a sextortion attempt
+- Offer educational resources to help both teens and their guardians understand the risks and how to prevent them.
+- Facilitate secure and confidential communication for teens to report incidents and receive professional support.
+
 ---
 
 ## Key Features
-- **SMS Monitoring**: Scans incoming messages for harmful or coercive content
-- **AI Analysis**: Uses the Gemini API to detect suspicious language patterns
-- **Real Time Alerts**: Notifies the child of potential threats and provides immediate advice
-- **Guardian Notifications**: Alerts parents or guardians if a risk is detected
-- **Safety Tips**: Offers guidance on how to handle sextortion attempts securely
+1. **SMS Monitoring**: Scans incoming messages for harmful or coercive content
+2. **AI Analysis**: Uses the Gemini API to detect suspicious language patterns
+3. **Real Time Alerts**: Notifies the child of potential threats and provides immediate advice
+4. **Guardian Notifications**: Alerts parents or guardians if a risk is detected
+5. **Safety Tips**: Offers guidance on how to handle sextortion attempts securely
 
 ---
 
