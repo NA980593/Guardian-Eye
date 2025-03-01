@@ -7,10 +7,10 @@
 
  ## Team Members
 
-- **Kush Desai**: 
-- **Nishchay Arjyal**: 
-- **Nick Santone**: 
-- **Lexi Baker**:
+- **Kush Desai**: role(s)
+- **Nishchay Arjyal**: role(s)
+- **Nick Santone**: role(s)
+- **Lexi Baker**: role(s)
   
 ---
 
@@ -50,9 +50,9 @@ We are committed to fostering a safer online environment, particularly for vulne
 
 ## Tech Stack
 
-- **Backend**: Flask
+- **Backend**: Flask and Bcrypt
 - **Frontend**: HTMX, Bootstrap
 - **AI Processing**: Gemini API
-- **Messaging**: SMS API
+- **Messaging**: Twilio SMS API
 - **Database**: TBD
 
