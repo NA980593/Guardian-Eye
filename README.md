@@ -44,7 +44,7 @@ The platform aims to:
 ## Goals
 The goal of Guardian Eye is to create a secure, proactive system where teens can easily report incidents of sextortion and receive immediate assistance. By integrating a robust set of tools and resources, including educational content, real-time alerts, and access to trusted professionals, we strive to empower teens and protect their privacy.
 
-Through this project, we are committed to fostering a safer online environment, particularly for vulnerable groups, and raising awareness about the dangers of sextortion in the digital age.
+We are committed to fostering a safer online environment, particularly for vulnerable groups, and raising awareness about the dangers of sextortion in the digital age.
 
 ---
 
