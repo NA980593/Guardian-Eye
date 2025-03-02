@@ -1,0 +1,9 @@
+<ul>
+    {% for message in items %}
+    <li class="sus-message">
+        {{message}}
+    </li>
+    {% else %}
+    <p>No flagged messages found.</p>
+    {% endfor %}
+</ul>

@@ -14,6 +14,8 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../static/style.css">
 
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+
 </head>
 <body>
 
@@ -49,20 +51,9 @@
     <div class="container">
         <h1 class="text-center mb-4" style="font-weight: bold;">Welcome, {{ username }}</h1>
         <p class="text-center">Here are your alerts:</p>
-
-        <div class="about-content">
-            <h2>Flagged Messages:</h2>
-            <ul>
-                {% for message in flagged_messages %}
-                <li class="sus-message">
-                    <p><strong>Message:</strong> {{ message['message'] }}</p>
-                    <p><strong>Flagged On:</strong> {{ message['timestamp'] }}</p>
-                    <p><strong>Reason:</strong> Suspicious content detected by Gemini</p>
-                </li>
-                {% else %}
-                <p>No flagged messages found.</p>
-                {% endfor %}
-            </ul>
+        <h2>Flagged Messages:</h2>
+        <div class="about-content" hx-get="/items" hx-trigger="every 2s">
+            {% include 'items.html' %}
         </div>
 
         <a href="{{ url_for('logout') }}" class="btn btn-logout">Logout</a>
