@@ -114,14 +114,9 @@ body {
     }
 
     .image-placeholder {
-        height: 150px;
         font-size: 16px;
     }
 
-    .kid_homepage img {
-        width: 100%; 
-        height: auto;
-    }
 }
 
 /* About page specific styles */
@@ -300,7 +295,6 @@ summary:focus {
     font-weight: bold;
     text-align: center;
     margin-bottom: 40px;
-    font-style: italic;
 }
 
 @keyframes bounce {
