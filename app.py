@@ -7,6 +7,9 @@ import random
 from string import ascii_letters
 from flask_socketio import SocketIO, join_room, leave_room, send
 from chat_screener import isMessageSuspicious
+import email_sender as email_sender
+
+flagged_messages = []
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a random secret key
@@ -175,6 +178,8 @@ def handle_message(payload):
     if room not in rooms:
         return
     print(isMessageSuspicious(payload["message"]))
+    if(isMessageSuspicious(payload["message"])):
+        email_sender.send_email(message_sender_name=name,message=payload["message"])
     message = {
         "sender": name,
         "message": payload["message"]
