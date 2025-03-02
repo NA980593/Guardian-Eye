@@ -13,8 +13,8 @@ def isMessageSuspicious(message):
 
 def analyze_message(message):
     client = genai.Client(
-        # api_key=os.getenv(key),
-        api_key="", # remove this before deploying
+        api_key=os.getenv(key),
+
     )
 
     model = "gemini-2.0-flash"
