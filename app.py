@@ -9,7 +9,7 @@ from flask_socketio import SocketIO, join_room, leave_room, send
 from chat_screener import isMessageSuspicious
 import email_sender as email_sender
 
-flagged_messages = []
+items = []
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a random secret key
@@ -180,6 +180,7 @@ def handle_message(payload):
     print(isMessageSuspicious(payload["message"]))
     if(isMessageSuspicious(payload["message"])):
         email_sender.send_email(message_sender_name=name,message=payload["message"])
+        items.append(payload["message"])
     message = {
         "sender": name,
         "message": payload["message"]
@@ -204,6 +205,11 @@ def handle_disconnect():
         "sender": ""
     }, to=room)
 ...
+
+@app.route('/items')
+def get_items():
+    print(items)
+    return render_template('items.html', items=items) #render only the fragment 
 
 
 if __name__ in '__main__':
