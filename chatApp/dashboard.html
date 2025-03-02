@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
+</head>
+<body>
+<h1>Chat Messages</h1>
+
+<!-- The container that will hold the flagged messages -->
+<div id="flagged-messages">
+    <!-- Flagged messages will be injected here -->
+</div>
+
+<!-- HTMX trigger to check for flagged messages every second -->
+<div
+        hx-get="/check-flagged-messages"
+        hx-trigger="every 1s"
+        hx-target="#flagged-messages"
+        hx-swap="beforeend">
+</div>
+
+<!-- You can add your regular chat input and message display here -->
+</body>
+</html>
