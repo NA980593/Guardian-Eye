@@ -3,8 +3,8 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
-    font-family: sans-serif;
+    font-family: 'Maven Pro', sans-serif;
+    background-color: #FDFDFD;
 }
 
 #room-container {
@@ -71,7 +71,7 @@ body {
 
 #send-btn {
     padding: 8px 12px;
-    background-color: #007bff;
+    background-color: #ADC094;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -79,13 +79,13 @@ body {
 }
 
 #send-btn:hover {
-    background-color: #0056b3;
+    background-color: #516C2D;
 }
 
 #leave-chat-btn {
     display: block;
     text-align: center;
     margin-top: 20px;
-    color: #007bff;
+    color: #516C2D;
     text-decoration: none;
 }
