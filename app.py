@@ -55,6 +55,7 @@ def login():
         user = User.query.filter_by(username=username).first()
 
         if user and (user.password == password):
+            session['username'] = username
             return redirect(url_for('dashboard'))
         else:
             flash('Invalid username or password. Please try again.')
@@ -84,6 +85,8 @@ def create():
 
 @app.route('/dashboard')
 def dashboard():
+    if 'username' not in session:
+        return redirect(url_for('login'))
     return render_template('dashboard.html')
 
 @app.route('/logout')
