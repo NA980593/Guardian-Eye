@@ -31,10 +31,19 @@ class User(db.Model):
 
 
 @app.route('/')
+@app.route('/home')
 def home():
     if 'username' in session:
         return redirect(url_for('dashboard'))
-    return render_template('home.html')
+    return render_template('home_page.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+@app.route('/whatToDo')
+def whatToDo():
+    return render_template('whatToDo.html')
 
 @app.route('/login', methods=['POST'])
 def login():
@@ -47,7 +56,7 @@ def login():
         session['username'] = username
         return redirect(url_for('dashboard'))
     else:
-        return render_template('home.html', error='Invalid username or password.')
+        return render_template('home_page.html', error='Invalid username or password.')
 
 @app.route('/register', methods=['POST'])
 def register():
@@ -58,10 +67,10 @@ def register():
     em = User.query.filter_by(email = email).first()
     if user:
         flash('Username already exists')
-        return render_template('home.html', error='Username already exists.')
+        return render_template('home_page.html', error='Username already exists.')
     if em:
         flash('Email already exists')
-        return render_template('home.html', error = 'Email already exists.')
+        return render_template('home_page.html', error = 'Email already exists.')
     if em and user:
         flash('Either your Username or Email exists already')
     else:
