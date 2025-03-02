@@ -7,10 +7,10 @@ HenHacks 2025 Project
 
 ## Team Members
 
-- **Kush Desai**: Backend Developer, AI Developer, Chat System Developer
-- **Nishchay Arjyal**: Backend Developer, AI Developer, Project Manager
-- **Nick Santone**: Backend Developer, Database Specialist, SOMETHING ELSE
-- **Lexi Baker**: Frontend Developer, Graphic Lead/Visual Designer, UI/UX Designer
+- **[Kush Desai](www.linkedin.com/in/kushdd)**: Backend Developer, AI Developer, Chat System Developer
+- **[Nishchay Arjyal](https://www.linkedin.com/in/nishchay-arjyal-0a8064284/)**: Backend Developer, AI Developer, Project Manager
+- **[Nick Santone](https://www.linkedin.com/in/nicholas-santone-31b7a3293/)**: Backend Developer, Database Specialist, SOMETHING ELSE
+- **[Alexis Baker](https://www.linkedin.com/in/alexis-baker-impact/)**: Frontend Developer, Graphic Lead/Visual Designer, UI/UX Designer
 
 ---
 
