@@ -1,5 +1,5 @@
-# **Guardian Eye** 
-HenHacks 2025 Project
+# Guardian Eye
+_HenHacks 2025 Project_
 
 **Guardian Eye** is a cybersecurity web application designed to protect minors from online sextortion threats. The system monitors incoming messages, analyzes them using the Gemini API for potential risks, and notifies both the child and their guardians if a threat is detected. Additionally, **Guardian Eye** features a **real-time chat application** that allows teens to securely communicate and report potential threats while also receiving support and guidance.
 
