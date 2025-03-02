@@ -58,8 +58,8 @@ We are committed to fostering a safer online environment, particularly for vulne
 
 ## Tech Stack
 
-- **Backend**: Flask and Bcrypt
+- **Backend**: Flask
 - **Frontend**: HTMX, Bootstrap
 - **AI Features**: Gemini API
 - **Real-Time Chat**: Flask, Websockets
-- **Database**: SQLAlchemy 
+- **Database**: SQLite + Alchemy 
