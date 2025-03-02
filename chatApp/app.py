@@ -2,6 +2,7 @@ import random
 from string import ascii_letters
 from flask import Flask, request, render_template, redirect, url_for, session
 from flask_socketio import SocketIO, join_room, leave_room, send
+from chat_screener import isMessageSuspicious
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "supersecretkey"
@@ -12,14 +13,10 @@ rooms = {}
 
 # ...
 def generate_room_code(length: int, existing_codes: list[str]) -> str:
-    while True:
-        code_chars = [random.choice(ascii_letters) for _ in range(length)]
-        code = ''.join(code_chars)
-        if code not in existing_codes:
-            return code
+    return "fruitsnacks"
 
 # Home Route
-@app.route('/', methods=["GET", "POST"])
+@app.route('/chat', methods=["GET", "POST"])
 def home():
     session.clear()
     if request.method == "POST":
@@ -88,6 +85,7 @@ def handle_message(payload):
     name = session.get('name')
     if room not in rooms:
         return
+    print(isMessageSuspicious(payload["message"]))
     message = {
         "sender": name,
         "message": payload["message"]
