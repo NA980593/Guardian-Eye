@@ -29,6 +29,7 @@ The platform aims to:
 - Provide teens with immediate alerts if they are targeted by a sextortion attempt.
 - Offer educational resources to help both teens and their guardians understand the risks and how to prevent them.
 - Facilitate secure and confidential communication for teens to report incidents and receive professional support.
+- Integrate an AI-powered chatbot that offers guidance and emotional support for victims of sextortion.
 
 ---
 
@@ -38,8 +39,13 @@ The platform aims to:
 3. **Real-Time Alerts**: Notifies the child of potential threats and provides immediate advice.
 4. **Guardian Notifications**: Alerts parents or guardians if a risk is detected.
 5. **Safety Tips**: Offers guidance on how to handle sextortion attempts securely.
-6. **Real-Time Chat Application**: Teens can securely communicate with their guardians or counselors via an integrated chat feature, report incidents, and receive instant advice in a confidential and safe environment.
-7. **Room-based Chat System**: Allows users to join specific rooms dedicated to different types of issues or support topics, ensuring appropriate conversations and guidance.
+6. **AI Chatbot**: Provides real-time, compassionate advice for victims or individuals at risk of sextortion. The chatbot offers:
+   - Immediate steps for victims who are just discovering they are being targeted
+   - Guidance on recognizing the signs of sextortion
+   - Advice on how to report and seek help
+   - Emotional support for handling the psychological impact
+   - Tips for protecting against future attempts
+   - Compassionate, empowering, and supportive responses that focus on actionable steps
 
 ---
 
@@ -54,7 +60,7 @@ We are committed to fostering a safer online environment, particularly for vulne
 
 - **Backend**: Flask and Bcrypt
 - **Frontend**: HTMX, Bootstrap
-- **AI Processing**: Gemini API
+- **AI Features**: Gemini API
 - **Messaging**: Twilio SMS API
 - **Real-Time Chat**: Flask-SocketIO
-- **Database**: TBD
+- **Database**: SQLAlchemy 
