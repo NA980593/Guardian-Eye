@@ -53,7 +53,7 @@ body {
 }
 
 .container h2 {
-    font-size: 8vw; /* Responsive font size */
+    font-size: 70px;
     color: #333;
 }
 
@@ -73,8 +73,9 @@ body {
 }
 
 .kid_homepage img {
-    width: 50vw; /* Responsive width */
-    height: auto; /* Maintain aspect ratio */
+    width: 600px;
+    height: 400px;
+    display: flex;
 }
 
 .image-placeholder {
@@ -103,19 +104,18 @@ body {
     }
 
     .container h2 {
-        font-size: 40px;
-    }
-
-    @media (max-width: 576px) {
-        .container h2 {
-            font-size: 30px;
-        }
+        font-size: 40px; 
     }
 
     .image-placeholder {
+        height: 150px;
         font-size: 16px;
     }
 
+    .kid_homepage img {
+        width: 100%; 
+        height: auto;
+    }
 }
 
 /* About page specific styles */
@@ -343,3 +343,4 @@ details summary:hover ~ * {
     transform: scale(1.05);
   }
 }
+
