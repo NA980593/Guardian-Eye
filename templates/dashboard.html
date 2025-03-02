@@ -2,10 +2,26 @@
 
 {% block body %}
 
-<div class = "container">
-    <h1> Welcome, {{username}}</h1>
-    <p>Here are your alerts</p>
-    <a href = "" class = "btn btn-logout">
+<div class="container">
+    <h1> Welcome, {{ username }} </h1>
+    <p>Here are your alerts:</p>
+
+    <div id="sus-messages">
+        <h2>Flagged Messages:</h2>
+        <ul>
+            {% for message in flagged_messages %}
+            <li class="sus-message">
+                <p><strong>Message:</strong> {{ message['message'] }}</p>
+                <p><strong>Flagged On:</strong> {{ message['timestamp'] }}</p>
+                <p><strong>Reason:</strong> Suspicious content detected by Gemini</p>
+            </li>
+            {% else %}
+            <p>No flagged messages found.</p>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <a href="{{ url_for('logout') }}" class="btn btn-logout">Logout</a>
 </div>
 
 {% endblock %}
