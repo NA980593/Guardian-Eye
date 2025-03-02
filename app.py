@@ -7,7 +7,6 @@ import random
 from string import ascii_letters
 from flask_socketio import SocketIO, join_room, leave_room, send
 from chat_screener import isMessageSuspicious
-import email_sender as email_sender
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'  # Change this to a random secret key
@@ -21,7 +20,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25), unique=True, nullable=False)
     email = db.Column(db.String(65), unique = True, nullable = False)
-    password_hash = db.Column(db.String(150), nullable=False)
+    password = db.Column(db.String(150), nullable=False)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -36,6 +35,7 @@ class User(db.Model):
 def home():
     if 'username' in session:
         return redirect(url_for('dashboard'))
+    db.create_all()
     return render_template('home_page.html')
 
 @app.route('/about')
@@ -46,47 +46,45 @@ def about():
 def whatToDo():
     return render_template('whatToDo.html')
 
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods = ['GET', 'POST'])
 def login():
-    username = request.form['username']
-    password = request.form['password']
-    email = request.form['email']
-    user = User.query.filter_by(username=username).first()
-    em = User.query.filter_by(email = email).first()
-    if user and em and user.check_password(password):
-        session['username'] = username
-        return redirect(url_for('dashboard'))
-    else:
-        return render_template('home_page.html', error='Invalid username or password.')
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
 
-@app.route('/register', methods=['POST'])
-def register():
-    username = request.form['username']
-    email = request.form['email']
-    password = request.form['password']
-    user = User.query.filter_by(username=username).first()
-    em = User.query.filter_by(email = email).first()
-    if user:
-        flash('Username already exists')
-        return render_template('home_page.html', error='Username already exists.')
-    if em:
-        flash('Email already exists')
-        return render_template('home_page.html', error = 'Email already exists.')
-    if em and user:
-        flash('Either your Username or Email exists already')
-    else:
-        new_user = User(username=username, email = email)
-        new_user.set_password(password)
+        user = User.query.filter_by(username=username).first()
+
+        if user and (user.password == password):
+            return redirect(url_for('dashboard'))
+        else:
+            flash('Invalid username or password. Please try again.')
+    return render_template('login.html')
+
+@app.route('/create', methods = ['GET', 'POST'])
+def create():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        confirm_password = request.form['confirmPassword']
+
+        if password != confirm_password:
+            return 'Passwords do not match. Please try again.'
+
+        existing_user = User.query.filter((User.username == username) | (User.email == email)).first()
+        if existing_user:
+            return 'Username or email already taken. Please try again'
+        
+        new_user = User(username = username, email = email, password = password)
         db.session.add(new_user)
         db.session.commit()
-        session['username'] = username
-        return redirect(url_for('dashboard'))
+        
+        return redirect(url_for('login'))
+    return render_template('createAccount.html')
 
 @app.route('/dashboard')
 def dashboard():
-    if 'username' in session:
-        return render_template('dashboard.html', username=session['username'])
-    return redirect(url_for('home'))
+    return render_template('dashboard.html')
 
 @app.route('/logout')
 def logout():
@@ -174,8 +172,6 @@ def handle_message(payload):
     if room not in rooms:
         return
     print(isMessageSuspicious(payload["message"]))
-    if(isMessageSuspicious(payload["message"])):
-        email_sender.send_email(message_sender_name=name,message=payload["message"])
     message = {
         "sender": name,
         "message": payload["message"]
