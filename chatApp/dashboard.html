@@ -4,24 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat App</title>
+    <link rel="stylesheet" href="styles.css">
     <script src="https://unpkg.com/htmx.org@2.0.4" integrity="sha384-HGfztofotfshcF7+8n44JQL2oJmowVChPTg48S+jvZoztPfvwD79OC/LTtG6dMp+" crossorigin="anonymous"></script>
 </head>
 <body>
-<h1>Chat Messages</h1>
 
-<!-- The container that will hold the flagged messages -->
-<div id="flagged-messages">
-    <!-- Flagged messages will be injected here -->
+<h1>Chat App</h1>
+
+<div id="chat-container">
+    <!-- User messages -->
+    <div id="messages">
+        <!-- Placeholder for dynamic chat messages -->
+        <div class="message">Welcome to the chat!</div>
+    </div>
+
+    <div id="sus-messages">
+        <!-- Placeholder for flagged (sus) messages -->
+        <h2>Flagged Messages:</h2>
+        <div id="flagged-messages"></div>
+    </div>
 </div>
 
-<!-- HTMX trigger to check for flagged messages every second -->
+<!-- Input form for sending messages -->
+<div id="message-input">
+    <textarea id="message" rows="3" placeholder="Type a message..."></textarea>
+    <button id="sendMessage" onclick="sendMessage()">Send</button>
+</div>
+
+<!-- Simulated server-side functionality with HTMX -->
 <div
-        hx-get="/check-flagged-messages"
+        id="check-sus-messages"
+        hx-get="/get-flagged-messages"
         hx-trigger="every 1s"
         hx-target="#flagged-messages"
-        hx-swap="beforeend">
+        hx-swap="outerHTML">
+    <!-- Auto-trigger every second -->
 </div>
 
-<!-- You can add your regular chat input and message display here -->
+<script>
+// Simulating a backend function that sends back flagged messages
+function sendMessage() {
+    const messageContent = document.getElementById('message').value;
+    if (messageContent) {
+        // Simulating sending a message and the server responding with a message
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message');
+        messageDiv.textContent = messageContent;
+        document.getElementById('messages').appendChild(messageDiv);
+
+        // Reset message input
+        document.getElementById('message').value = '';
+    }
+}
+
+// Placeholder function for flagged messages (this should come from the server)
+function getFlaggedMessages() {
+    return `
+        <div class="sus-message">
+            <p>This message was flagged for being suspicious!</p>
+        </div>
+    `;
+}
+</script>
+
 </body>
 </html>
