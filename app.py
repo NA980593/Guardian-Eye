@@ -179,7 +179,7 @@ def handle_message(payload):
     print(isMessageSuspicious(payload["message"]))
     if(isMessageSuspicious(payload["message"])):
         email_sender.send_email(message_sender_name=name,message=payload["message"])
-        items.append(payload["message"])
+        items.append("Suspicious message sent to Ben from "+name+": "+payload["message"])
     message = {
         "sender": name,
         "message": payload["message"]
