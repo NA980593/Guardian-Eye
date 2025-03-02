@@ -32,7 +32,7 @@ body {
 }
 
 .navbar-nav .nav-item .nav-link:hover {
-    color: #ADC094;
+    color: #516C2D;
 }
 
 /* Rounded box for Log In */
@@ -104,7 +104,13 @@ body {
     }
 
     .container h2 {
-        font-size: 40px; 
+        font-size: 40px;
+    }
+
+    @media (max-width: 576px) {
+        .container h2 {
+            font-size: 30px;
+        }
     }
 
     .image-placeholder {
