@@ -1,24 +1,20 @@
-import base64
+from flask import Flask, render_template, request, jsonify
 import os
 from google import genai
 from google.genai import types
 
+# Initialize Flask app
+app = Flask(__name__)
 
 # Function to generate advice for sextortion
 def generate_advice(input_text):
-    client = genai.Client(
-        api_key=os.getenv("GEMINI_API_KEY"),
-    )
+    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
     model = "gemini-2.0-flash"
     contents = [
         types.Content(
             role="user",
-            parts=[
-                types.Part.from_text(
-                    text=input_text
-                ),
-            ],
+            parts=[types.Part.from_text(text=input_text)],
         ),
     ]
     generate_content_config = types.GenerateContentConfig(
@@ -55,29 +51,15 @@ Ensure the tone is empathetic, empowering, and supportive, focusing on providing
         return chunk.text
 
 
-# Start the chatbot session and conversation history
-history = []
+# Flask route to handle chat
+@app.route("/", methods=["GET", "POST"])
+def index():
+    if request.method == "POST":
+        user_input = request.form["user_input"]
+        model_response = generate_advice(user_input)
+        return jsonify({"response": model_response})
 
-print("Bot: Hello, how can I help you? (Please note this is an AI Bot and may not always provide the best/correct response)")
+    return render_template("index.html")
 
-while True:
-    # Get user input
-    user_input = input("You: ")
-
-    # If the user types 'exit', break out of the loop
-    if user_input.lower() == 'exit':
-        print("Bot: Goodbye!")
-        break
-
-    # Add user input to conversation history
-    history.append({"role": "user", "parts": [user_input]})
-
-    # Call generate_advice with the user's input
-    model_response = generate_advice(user_input)
-
-    # Add the model's response to the conversation history
-    history.append({"role": "model", "parts": [model_response]})
-
-    # Print the model's response
-    print(f'Bot: {model_response}')
-    print()
+if __name__ == "__main__":
+    app.run(debug=True)
