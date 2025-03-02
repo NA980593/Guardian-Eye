@@ -17,7 +17,6 @@ body {
     max-height: 144px;
     width: 100%;
     height: auto;
-    padding-bottom: 20px; 
 }
 
 .navbar-nav .nav-item {
@@ -284,4 +283,20 @@ summary:focus {
 
 .arrowLines {
     padding: 50px;
+}
+
+.about-heading {
+    font-size: 3em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+    font-style: italic;
+}
+
+.create-account {
+    color:#ADC094;
+}
+
+.create-account:hover {
+    color:#516C2D;  
 }
