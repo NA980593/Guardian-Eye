@@ -53,7 +53,7 @@ body {
 }
 
 .container h2 {
-    font-size: 70px;
+    font-size: 8vw; /* Responsive font size */
     color: #333;
 }
 
@@ -73,9 +73,8 @@ body {
 }
 
 .kid_homepage img {
-    width: 600px;
-    height: 400px;
-    display: flex;
+    width: 50vw; /* Responsive width */
+    height: auto; /* Maintain aspect ratio */
 }
 
 .image-placeholder {
