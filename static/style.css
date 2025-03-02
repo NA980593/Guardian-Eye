@@ -281,3 +281,7 @@ summary:focus {
     max-width: 1200px; 
     height: auto;
 }
+
+.arrowLines {
+    padding: 50px;
+}
