@@ -57,6 +57,10 @@ body {
     color: #333;
 }
 
+.container h2:hover {
+    animation: bounce 1s infinite alternate;
+}
+
 .indented-line {
     display: inline-block;
     margin-left: 100px; 
@@ -293,10 +297,50 @@ summary:focus {
     font-style: italic;
 }
 
+@keyframes bounce {
+    0%   { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
+
 .create-account {
     color:#ADC094;
 }
 
 .create-account:hover {
     color:#516C2D;  
+}
+
+/* Fade-in animation for details on hover */
+details summary:hover {
+  cursor: pointer;
+}
+
+details summary:hover ~ * {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Pulsating animation for Ask Away section on hover */
+.chat-ui-section:hover .ask-away-title {
+  font-weight: bold;
+  font-size: 30pt;
+  padding-top: 20px;
+  animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.05);
+  }
 }
