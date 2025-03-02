@@ -92,7 +92,9 @@ def create():
 def dashboard():
     if 'username' not in session:
         return redirect(url_for('login'))
-    return render_template('dashboard.html')
+    
+    username = session['username']
+    return render_template('dashboard.html', username = username)
 
 @app.route('/logout')
 def logout():
