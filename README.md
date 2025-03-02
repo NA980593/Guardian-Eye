@@ -1,5 +1,5 @@
 # Guardian Eye
-_HenHacks 2025 Project_
+[_HenHacks 2025 Project_](https://devpost.com/software/guardian-eye)
 
 **Guardian Eye** is a cybersecurity web application designed to protect minors from online sextortion threats. The system monitors incoming messages, analyzes them using the Gemini API for potential risks, and notifies both the child and their guardians if a threat is detected. Additionally, **Guardian Eye** features a **real-time chat application** that allows teens to securely communicate and report potential threats while also receiving support and guidance.
 
@@ -7,7 +7,7 @@ _HenHacks 2025 Project_
 
 ## Team Members
 
-- **[Kush Desai](https://www.linkedin.com/in/kushdd/)**: Backend Developer, AI & Chat System Developer, Technical Documentation Lead
+- **[Kush Desai](https://www.linkedin.com/in/kushdd/)**: Backend Developer, AI & Chat System Developer, Technical Documentation and Demo Lead
 - **[Nishchay Arjyal](https://www.linkedin.com/in/nishchay-arjyal-0a8064284/)**: Backend Developer, Project Manager, Lead Architect 
 - **[Nick Santone](https://www.linkedin.com/in/nicholas-santone-31b7a3293/)**: Backend Developer, Database Specialist, Infrastructure Engineer
 - **[Alexis Baker](https://www.linkedin.com/in/alexis-baker-impact/)**: Frontend Developer, Graphic Lead/Visual Designer, UI/UX Lead
