@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 import os
@@ -52,9 +52,13 @@ def register():
     user = User.query.filter_by(username=username).first()
     em = User.query.filter_by(email = email).first()
     if user:
+        flash('Username already exists')
         return render_template('home.html', error='Username already exists.')
     if em:
+        flash('Email already exists')
         return render_template('home.html', error = 'Email already exists.')
+    if em and user:
+        flash('Either your Username or Email exists already')
     else:
         new_user = User(username=username, email = email)
         new_user.set_password(password)
