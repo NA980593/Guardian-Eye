@@ -23,7 +23,7 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(25), unique=True, nullable=False)
     email = db.Column(db.String(65), unique = True, nullable = False)
-    password = db.Column(db.String(150), nullable=False)
+    password_hash = db.Column(db.String(150), nullable=False)
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
@@ -36,8 +36,6 @@ class User(db.Model):
 @app.route('/')
 @app.route('/home')
 def home():
-    if 'username' in session:
-        return redirect(url_for('dashboard'))
     db.create_all()
     return render_template('home_page.html')
 
@@ -57,7 +55,7 @@ def login():
 
         user = User.query.filter_by(username=username).first()
 
-        if user and (user.password == password):
+        if user and user.check_password(password):
             session['username'] = username
             return redirect(url_for('dashboard'))
         else:
@@ -79,7 +77,8 @@ def create():
         if existing_user:
             return 'Username or email already taken. Please try again'
         
-        new_user = User(username = username, email = email, password = password)
+        new_user = User(username = username, email = email)
+        new_user.set_password(password)
         db.session.add(new_user)
         db.session.commit()
         
