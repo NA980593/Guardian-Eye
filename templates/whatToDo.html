@@ -13,10 +13,10 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../static/style.css">
-    <link rel="stylesheet" href="../static/chatBot.css"> <!-- Add Chatbot Stylesheet -->
-
-</head>
-<body>
+    <link rel="stylesheet" href="../static/chatBot.css">
+    
+    </head>
+    <body>
 
 <!-- Navigation Bar -->
 <nav class="navbar navbar-expand-lg navbar-light">
@@ -105,7 +105,6 @@
 
 <!-- Chatbot Container -->
 <div class="container text-center">
-    <h3>Chat with GuardianEye</h3>
     <div class="chat-container">
         <div class="chat-box" id="chat-box">
             <!-- Messages will appear here -->
@@ -134,12 +133,12 @@
             // Append the user's message to the chat box
             const chatBox = document.getElementById('chat-box');
             const userMessage = document.createElement('div');
-            userMessage.classList.add('user-message');
-            userMessage.textContent = 'You: ' + userInput;
-            chatBox.appendChild(userMessage);
-
-            // Send the user input to the backend
-            const response = await fetch('/get_response', {
+            userMessage.classList.add('user-message', 'what-to-do-content');
+                        userMessage.textContent = 'You: ' + userInput;
+                        chatBox.appendChild(userMessage);
+            
+                        // Send the user input to the backend
+                        const response = await fetch('/get_response', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -151,9 +150,9 @@
 
             // Append the bot's response to the chat box
             const botMessage = document.createElement('div');
-            botMessage.classList.add('bot-message');
-            botMessage.textContent = 'Guardian AI: ' + data.response;
-            chatBox.appendChild(botMessage);
+                        botMessage.classList.add('bot-message', 'what-to-do-content');
+                        botMessage.textContent = 'Guardian AI: ' + data.response;
+                        chatBox.appendChild(botMessage);
 
             // Scroll to the bottom of the chat box
             chatBox.scrollTop = chatBox.scrollHeight;
