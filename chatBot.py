@@ -1,20 +1,25 @@
-from flask import Flask, render_template, request, jsonify
 import os
+from flask import Flask, render_template, request, jsonify
 from google import genai
 from google.genai import types
+from dotenv import load_dotenv
 
-# Initialize Flask app
+# Load environment variables
+load_dotenv(dotenv_path='./root/.env')
+
 app = Flask(__name__)
 
-# Function to generate advice for sextortion
-def generate_advice(input_text):
-    client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
+# Generate function to interact with Gemini API
+def generate(user_input):
+    client = genai.Client(
+        api_key=os.getenv("GEMINI_API_KEY"),
+    )
 
     model = "gemini-2.0-flash"
     contents = [
         types.Content(
             role="user",
-            parts=[types.Part.from_text(text=input_text)],
+            parts=[types.Part.from_text(text=user_input)],
         ),
     ]
     generate_content_config = types.GenerateContentConfig(
@@ -37,29 +42,34 @@ Emotional support: Provide reassurance that victims are not alone and share heal
 
 Prevention tips for the future: Offer advice on how to protect oneself from future sextortion attempts, including safeguarding personal information and recognizing red flags in online interactions.
 
-Ensure the tone is empathetic, empowering, and supportive, focusing on providing hope and actionable steps for victims to take control of their situation."""
+Ensure the tone is empathetic, empowering, and supportive, focusing on providing hope and actionable steps for victims to take control of their situation. Write in normal text and try to be human like with it. Say regular sentences no "**" bolding
+
+or italics and such. Try to keep it at a simpler and more minimum level too but still give appropriate amount of information"""
             ),
         ],
     )
 
-    # Get the response using the Gemini API
+    response_text = ""
     for chunk in client.models.generate_content_stream(
         model=model,
         contents=contents,
         config=generate_content_config,
     ):
-        return chunk.text
+        response_text += chunk.text
 
+    return response_text
 
-# Flask route to handle chat
-@app.route("/", methods=["GET", "POST"])
+# Home route
+@app.route('/')
 def index():
-    if request.method == "POST":
-        user_input = request.form["user_input"]
-        model_response = generate_advice(user_input)
-        return jsonify({"response": model_response})
+    return render_template('chatBot.html')
 
-    return render_template("index.html")
+# API route to handle the user input and return the response
+@app.route('/get_response', methods=['POST'])
+def get_response():
+    user_input = request.form['user_input']
+    response = generate(user_input)
+    return jsonify({'response': response})
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     app.run(debug=True)

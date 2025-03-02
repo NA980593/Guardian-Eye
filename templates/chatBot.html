@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot - GuardianEye</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='chatBot.css') }}">
+</head>
+<body>
+<div class="chat-container">
+    <div class="chat-box" id="chat-box">
+        <!-- Messages will appear here -->
+    </div>
+
+    <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Type your message..." required>
+        <button type="submit">Send</button>
+    </form>
+</div>
+
+<script>
+        document.getElementById('chat-form').addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            const userInput = document.getElementById('user-input').value;
+            document.getElementById('user-input').value = '';
+
+            // Append user's message to chat box
+            const chatBox = document.getElementById('chat-box');
+            const userMessage = document.createElement('div');
+            userMessage.classList.add('user-message');
+            userMessage.textContent = 'You: ' + userInput;
+            chatBox.appendChild(userMessage);
+
+            // Send request to Flask backend
+            const response = await fetch('/get_response', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({ user_input: userInput })
+            });
+
+            const data = await response.json();
+
+            // Append bot's response to chat box
+            const botMessage = document.createElement('div');
+            botMessage.classList.add('bot-message');
+            botMessage.textContent = 'Bot: ' + data.response;
+            chatBox.appendChild(botMessage);
+
+            // Scroll to bottom of the chat box
+            chatBox.scrollTop = chatBox.scrollHeight;
+        });
+    </script>
+</body>
+</html>
