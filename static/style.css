@@ -354,3 +354,49 @@ details summary:hover ~ * {
     margin-bottom: 10px;
     padding-top: 10%;
 }
+
+h1 {
+    font-weight: bold;
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+p {
+    font-size: 1.5em;
+    margin-top: 30px;
+}
+
+h2 {
+    margin-top: 20px;
+}
+
+.center-text {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.dashboard-title {
+    font-size: 60px;
+    color:#516C2D;
+}
+
+.dashboard-alerts {
+    text-align: center;
+}
+
+.flagged-messages {
+    font-size: 40px;
+    color:#516C2D;
+    padding-bottom: 5%;
+}
+
+.btn-primary {
+    color: white;
+    background-color: #516C2D;
+    border-color: #516C2D;
+}
+
+.about-content {
+    font-size: 1.2em;
+}

@@ -49,14 +49,15 @@
     </nav>
 
     <div class="container">
-        <h1 class="text-center mb-4" style="font-weight: bold;">Welcome, {{ username }}</h1>
-        <p class="text-center">Here are your alerts:</p>
-        <h2>Flagged Messages:</h2>
+        <h1 class="dashboard-title">Welcome {{ username }}</h1>
+        <p class="dashboard-alerts">Here are your alerts!</p>
+        <p class="flagged-messages">Flagged Messages:</p>
         <div class="about-content" hx-get="/items" hx-trigger="every 2s">
             {% include 'items.html' %}
         </div>
-
-        <a href="{{ url_for('logout') }}" class="btn btn-logout">Logout</a>
+        <div class="center-text">
+            <a href="{{ url_for('logout') }}" class="btn btn-primary">Logout</a>
+        </div>
     </div>
 
     <!-- Bootstrap JS and dependencies -->
