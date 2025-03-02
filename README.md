@@ -34,7 +34,7 @@ The platform aims to:
 ---
 
 ## Key Features
-1. **SMS Monitoring**: Scans incoming messages for harmful or coercive content.
+1. **Chat Monitoring**: Scans incoming messages for harmful or coercive content.
 2. **AI Analysis**: Uses the Gemini API to detect suspicious language patterns.
 3. **Real-Time Alerts**: Notifies the child of potential threats and provides immediate advice.
 4. **Guardian Notifications**: Alerts parents or guardians if a risk is detected.
@@ -61,6 +61,5 @@ We are committed to fostering a safer online environment, particularly for vulne
 - **Backend**: Flask and Bcrypt
 - **Frontend**: HTMX, Bootstrap
 - **AI Features**: Gemini API
-- **Messaging**: Twilio SMS API
-- **Real-Time Chat**: Flask-SocketIO
+- **Real-Time Chat**: Flask, Websockets
 - **Database**: SQLAlchemy 
